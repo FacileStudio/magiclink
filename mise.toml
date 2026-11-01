@@ -1,0 +1,32 @@
+[settings]
+lockfile = true
+
+[tools]
+lefthook = "latest"
+bun = "1.3.13"
+node = "22.23.2"
+
+[hooks]
+postinstall = "lefthook install"
+
+[env]
+BUN_BIN = { value = "{{tools.bun.path}}/bin/bun", tools = true }
+NODE_BIN_DIR = { value = "{{tools.node.path}}/bin", tools = true }
+
+[tasks.install]
+description = "Install dependencies with Bun"
+run = 'PATH="$NODE_BIN_DIR:$PATH" "$BUN_BIN" install --frozen-lockfile'
+
+[tasks.build]
+description = "Compile the TypeScript sources to dist/"
+depends = ["install"]
+run = 'PATH="$NODE_BIN_DIR:$PATH" "$BUN_BIN" run build'
+
+[tasks.check]
+description = "Run the filet quality gate"
+run = "filet check ."
+
+[tasks.test]
+description = "Run the bun test suite"
+depends = ["install"]
+run = 'PATH="$NODE_BIN_DIR:$PATH" "$BUN_BIN" test'
