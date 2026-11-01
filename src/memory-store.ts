@@ -22,10 +22,10 @@ export function createMemoryStore(options: { clock?: () => Date } = {}): MagicLi
   return {
     rows,
     async create(link) {
-      rows.push({ ...link, createdAt: clock(), consumedAt: null });
+      rows.push({ ...link, createdAt: new Date(clock()), consumedAt: null });
     },
     async invalidateForUser(userId) {
-      const now = clock();
+      const now = new Date(clock());
       for (const row of rows) {
         if (row.userId === userId && row.consumedAt === null) row.consumedAt = now;
       }
@@ -35,7 +35,7 @@ export function createMemoryStore(options: { clock?: () => Date } = {}): MagicLi
         (r) => r.tokenHash === tokenHash && r.consumedAt === null && r.expiresAt > now
       );
       if (!row) return null;
-      row.consumedAt = now;
+      row.consumedAt = new Date(now);
       return { userId: row.userId };
     },
     async countSince(key, since) {

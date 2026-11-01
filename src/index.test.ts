@@ -177,7 +177,7 @@ describe('magic links', () => {
       buildLink: (t) => t,
     });
     await links.request('ada@example.com');
-    await Promise.resolve();
+    await new Promise((r) => setTimeout(r, 0));
     expect(errors).toHaveLength(1);
   });
 
