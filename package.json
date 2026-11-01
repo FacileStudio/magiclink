@@ -1,0 +1,33 @@
+{
+  "name": "@facile/magiclink",
+  "version": "0.1.0",
+  "description": "Magic link sign-in tokens for the Facile Suite: hashed single-use tokens, supersession, rate limits, no enumeration",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "files": [
+    "src",
+    "!src/**/*.test.ts"
+  ],
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "typescript": "^7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FacileStudio/magiclink.git"
+  },
+  "license": "MIT"
+}
