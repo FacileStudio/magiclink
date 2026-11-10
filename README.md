@@ -130,3 +130,7 @@ bun test
 bun run typecheck
 filet check .
 ```
+
+## License
+
+magiclink is licensed under the [MIT License](LICENSE).

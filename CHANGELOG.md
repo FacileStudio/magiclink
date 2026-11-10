@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- Licence: magiclink now ships the MIT `LICENSE` file that `package.json` already declared; before this, the repository carried no licence text.
+
 ## [0.1.0] - 2026-11-01
 
 ### Added
